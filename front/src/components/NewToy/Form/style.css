@@ -1,0 +1,66 @@
+
+.toy__form {
+    padding: 45px;
+    margin-top: 90px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    align-items: center;
+}
+.toy__form-field {
+    background: #FFE4CB;
+    border-radius: 54px;
+    padding: 16px;
+    min-height: 191px;
+    min-width: 260px;
+}
+.toy__form-title {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 99.5%;
+    color: #D29049;
+    opacity: 0.8;
+    position: absolute;
+    padding: 8px;
+    border-bottom: 2px dashed;
+    transform: translate(14%,15px);
+}
+
+.toy__form textarea{
+    outline: none;
+    -moz-appearance: none;
+    padding: 16px;
+    background: #FFE4CB;
+    resize: none;
+    border: 2px dashed #D29049;
+    border-radius: 50px;
+    height: 100%;
+    min-height: 150px;
+    min-width: 226px;
+    padding-top: 60px;
+}
+.toy__form textarea:focus-visible{
+    border: 2px dashed #D29049;
+}
+
+
+.toy__form button{
+    background: #FFE4CB;
+    border: 2px solid #D29049;
+    box-sizing: border-box;
+    border-radius: 54px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 99.5%;
+    padding: 14px 33px;
+    width: 100%;
+    max-width: 149px;
+    color:#D29049;
+    text-transform: uppercase;
+    cursor: pointer;
+}

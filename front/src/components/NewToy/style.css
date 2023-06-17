@@ -1,0 +1,40 @@
+.toy-new {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    bottom: 160px;
+    right: 10%;
+}
+.toy-new--edit {
+    transform: translate(calc(-50% + 40px),calc(-70% - 40px));
+    width: 355px;
+    height: 411px;
+    z-index: 11;
+    bottom: 4%;
+    right: 18%;
+}
+
+@keyframes isOpen {
+    0% {opacity: 0}
+    60% {opacity: 0.2}
+    80% {opacity: 0.7}
+    100% {opacity: 1}
+}
+
+.toy-new--edit .toy__form{
+    animation: isOpen 0.2s;
+}
+
+.toy-new--has-message:not(.toy-new--edit){
+    width: 60px;
+    height: 60px;
+    z-index: 11;
+    bottom: 4%;
+    right: 18%;
+}
+.toy-new--has-messag {
+    z-index: 11;
+}
