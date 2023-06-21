@@ -5,7 +5,7 @@ import {getToyCollections } from "./db/conn.mjs";
 dotenv.config({path:'../.env'})
 
 const PORT = process.env.API_PORT||3000
-console.log("API_PORT",process.env.API_PORT)
+
 
 //https://www.mongodb.com/developer/languages/javascript/hapijs-nodejs-driver/
 const init = async (getToys) => {
