@@ -1,10 +1,7 @@
 import Hapi from '@hapi/hapi';
 import {ObjectId} from "mongodb";
-import dotenv from 'dotenv'
 import {getToyCollections } from "./db/conn.mjs";
-dotenv.config({path:'../.env'})
-
-const PORT = process.env.API_PORT||3000
+import {PORT} from './app.config.mjs'
 
 
 //https://www.mongodb.com/developer/languages/javascript/hapijs-nodejs-driver/
