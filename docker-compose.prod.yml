@@ -3,19 +3,21 @@ services:
   front:
     build:
       context: ./front
-      dockerfile: Dockerfile-prod
+      dockerfile: Dockerfile
+      args:
+        FRONT_ENV: ${FRONT_ENV}
     restart: always
     ports:
-      - '3000:80'
+      - 3000:80
   api:
     build: ./server
     restart: always
     depends_on:
       - mongo
     ports:
-      - '3001:5000'
+      - ${API_PORT}:5000
     environment:
-      ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
+      ME_CONFIG_MONGODB_URL: ${ME_CONFIG_MONGODB_URL}
       PORT: 5000
   mongo:
     image: mongo
@@ -29,8 +31,9 @@ services:
     depends_on:
       - mongo
     ports:
-      - 8081:8081
+      - ${ME_PORT}:8081
     environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      ME_CONFIG_MONGODB_ADMINPASSWORD: example
-      ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
+      ME_CONFIG_BASICAUTH: true
+      ME_CONFIG_BASICAUTH_USERNAME: ${ME_CONFIG_BASICAUTH_USERNAME}
+      ME_CONFIG_BASICAUTH_PASSWORD: ${ME_CONFIG_BASICAUTH_PASSWORD}
+      ME_CONFIG_MONGODB_URL: ${ME_CONFIG_MONGODB_URL}

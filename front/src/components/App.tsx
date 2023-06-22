@@ -18,6 +18,7 @@ function App() {
     })
 
     const getToys = () =>{
+        console.log("process.env.API_SERVICE_URL",process.env.API_SERVICE_URL)
         fetch(`${process.env.API_SERVICE_URL}/toys`)
             .then(resp=>{
                 return resp.json()

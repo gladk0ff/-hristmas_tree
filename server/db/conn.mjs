@@ -1,11 +1,7 @@
-import dotenv from 'dotenv'
-dotenv.config({path:'../.env'})
+import {ME_CONFIG_MONGODB_URL} from './app.config.mjs'
 import { MongoClient } from "mongodb";
 
-console.log("process.env.ME_CONFIG_MONGODB_URL",process.env.ME_CONFIG_MONGODB_URL)
-const URL = process.env.ME_CONFIG_MONGODB_URL || 'mongodb://localhost:27017';
-
-const client = new MongoClient(URL,{useUnifiedTopology: true });
+const client = new MongoClient(ME_CONFIG_MONGODB_URL,{useUnifiedTopology: true });
 
 let dbConnection;
 let toysCollection;

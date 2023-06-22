@@ -1,5 +1,8 @@
 FROM node:alpine as build
 
+ARG FRONT_ENV
+ENV FRONT_ENV=$FRONT_ENV
+
 WORKDIR /app
 
 COPY package*.json ./
