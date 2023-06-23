@@ -1,14 +1,12 @@
 import Hapi from '@hapi/hapi';
 import {ObjectId} from "mongodb";
 import {getToyCollections } from "./db/conn.mjs";
-import {PORT} from './app.config.mjs'
-
 
 //https://www.mongodb.com/developer/languages/javascript/hapijs-nodejs-driver/
 const init = async (getToys) => {
 
     const server = Hapi.server({
-        port: PORT,
+        port: 5000,
         routes: {
             cors: {
                 origin: ['*'] // an array of origins or 'ignore'

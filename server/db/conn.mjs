@@ -1,7 +1,7 @@
-import {ME_CONFIG_MONGODB_URL} from './app.config.mjs'
+import CONF from '../app.config.mjs'
 import { MongoClient } from "mongodb";
 
-const client = new MongoClient(ME_CONFIG_MONGODB_URL,{useUnifiedTopology: true });
+const client = new MongoClient(CONF.ME_CONFIG_MONGODB_URL,{useUnifiedTopology: true });
 
 let dbConnection;
 let toysCollection;
