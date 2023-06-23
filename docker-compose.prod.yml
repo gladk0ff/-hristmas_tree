@@ -5,7 +5,7 @@ services:
       context: ./front
       dockerfile: Dockerfile
       args:
-        FRONT_ENV: ${FRONT_ENV}
+        API_SERVICE_URL: ${API_SERVICE_URL}
     restart: always
     ports:
       - 3000:80
