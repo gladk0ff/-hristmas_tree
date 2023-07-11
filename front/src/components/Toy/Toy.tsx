@@ -1,7 +1,9 @@
 import React, {MutableRefObject, useEffect, useRef, useState} from 'react';
+import { Tooltip } from 'react-tooltip'
 import T1 from 'assets/toy1.png';
 import T2 from 'assets/toy2.png';
 import T3 from 'assets/toy3.png';
+
 import './Toy.css';
 
 export const getRandomInt = (max) => {
@@ -32,6 +34,7 @@ const Toy = ({positionX, positionY, message}: any) => {
              className="toy toy--read-only">
             <img src={config[getRandomInt(3)]}/>
         </div>
+        <Tooltip multiline id="my-tooltip" />
     </>
 }
 

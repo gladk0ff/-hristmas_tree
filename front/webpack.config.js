@@ -1,22 +1,25 @@
 "use strict";
 const path = require('path');
-const webpack  = require('webpack')
+const webpack = require('webpack')
 const {
     API_SERVICE_URL
 } = require('./app.config')
-const HtmlWebpackPlugin  = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 
-module.exports=(env,argv)=> {
+module.exports = (env, argv) => {
     const NODE_ENV = argv.mode;
     process.env.NODE_ENV = NODE_ENV;
     const isDev = NODE_ENV === "development";
+    const isProd = !isDev;
 
     return {
         context: path.resolve(__dirname, "src/"),
         entry: './index.tsx',
         output: {
-            filename: 'main.js',
+            filename: '[name].js',
             path: path.resolve(__dirname, 'dist'),
         },
         resolve: {
@@ -26,16 +29,32 @@ module.exports=(env,argv)=> {
                 components: path.resolve(__dirname, 'src/components'),
             },
         },
+        optimization: {
+            splitChunks: {
+                cacheGroups: {
+                    vendors: {
+                        test: /[\\/]node_modules[\\/]/,
+                        name: "vendors",
+                        chunks: "all",
+                    },
+                },
+            },
+            minimizer: isProd ? [new CssMinimizerPlugin()]:[],
+        },
         devtool: isDev ? 'source-map' : false,
         plugins: [
             new HtmlWebpackPlugin({}),
             new CleanWebpackPlugin(),
             new webpack.DefinePlugin({
-                "process.env":{
-                    API_SERVICE_URL:JSON.stringify(API_SERVICE_URL)
+                "process.env": {
+                    API_SERVICE_URL: JSON.stringify(API_SERVICE_URL)
                 }
-            })
-        ],
+            }),
+            new MiniCssExtractPlugin({
+                filename: "[name].css",
+                chunkFilename: "[name].css",
+            }),
+        ].filter(Boolean),
         module: {
             rules: [
                 {
@@ -44,7 +63,10 @@ module.exports=(env,argv)=> {
                 },
                 {
                     test: /\.css$/i,
-                    use: ['style-loader', 'css-loader'],
+                    use: [
+                        isDev ? "style-loader" : MiniCssExtractPlugin.loader,
+                        'css-loader'
+                    ],
                 },
                 {
                     test: /\.(t|j)sx?$/i,
