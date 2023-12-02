@@ -1,16 +1,15 @@
 import React, {useEffect, useRef, useState} from 'react';
 
 import Snow from 'react-snow-effect';
-import Toy from 'components/Toy/Toy';
-import NewToy from "components/NewToy";
-import treeImg from 'assets/pngegg.png';
-import logo from 'assets/logo.svg'
-import Background2 from 'assets/background.jpg'
+import Toy from '@components/Toy/Toy';
+import NewToy from "@components/NewToy";
+import treeImg from '@assets/pngegg.png';
+import logo from '@assets/logo.svg'
+import Background2 from '@assets/background.jpg'
 
 import './App.css';
 
 function App() {
-
     const [toys, updateToys] = useState([...new Array(1)]);
     const [ourToys, updateOurToys] = useState([]);
     const [size,setSize]=useState({
@@ -48,8 +47,6 @@ function App() {
         }
     }, [])
 
-    console.log("render ourToys",ourToys)
-
     return (
         <div className="christmas-tree-app scene"
            style={{backgroundImage:`url(${Background2})`}}
@@ -58,10 +55,9 @@ function App() {
             <NewToy target={tree}/>
             <main className="christmas-tree-app__tree-container ">
                 <img src={treeImg} ref={tree} title="Елка" className="droppable"/>
+                {ourToys?.map((toy, index) => <Toy key={"toy" + index} {...toy}/>)}
             </main>
-            {ourToys?.map((toy, index) => <Toy key={"toy" + index} {...toy}/>)}
             <img className="christmas-tree-app__footer-logo" src={logo} alt=""/>
-
         </div>
     );
 }

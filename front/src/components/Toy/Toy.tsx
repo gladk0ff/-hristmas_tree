@@ -1,8 +1,8 @@
 import React, {MutableRefObject, useEffect, useRef, useState} from 'react';
 import { Tooltip } from 'react-tooltip'
-import T1 from 'assets/toy1.png';
-import T2 from 'assets/toy2.png';
-import T3 from 'assets/toy3.png';
+import T1 from '@assets/toy1.png';
+import T2 from '@assets/toy2.png';
+import T3 from '@assets/toy3.png';
 
 import './Toy.css';
 
@@ -22,8 +22,8 @@ const Toy = ({positionX, positionY, message}: any) => {
     const clientHeight = document.documentElement.clientHeight;
     const clientWidth = document.documentElement.clientWidth;
     const style = {
-        left: clientWidth / positionX,
-        top: clientHeight / positionY,
+        left: clientWidth * positionX,
+        top: clientHeight * positionY,
     };
 
     return <>

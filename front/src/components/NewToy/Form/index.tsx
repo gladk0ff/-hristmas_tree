@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-import 'components/NewToy/Form/style.css'
+import '@components/NewToy/Form/style.css'
 
 const EditForm = ({onSubmit, mess}) => {
     const [message, setState] = useState(mess);
