@@ -22,6 +22,15 @@
   background-repeat: no-repeat;
 }
 
+.christmas-tree-app__current-year{
+  font-size: 140px;
+  font-weight: bold;
+  color: white;
+  position: fixed;
+  right: 42px;
+  top: 83px;
+}
+
 
 .christmas-tree-app__header {
   position: fixed;
@@ -51,34 +60,37 @@
   height: 100%;
   z-index: 2;
   user-select: none;
-  transform: translateX(15%);
+  position: relative;
+  width: 30%;
 }
+
 main.christmas-tree-app__tree-container:after {
   content: '';
   display: block;
-  width: 300px;
+  width: 184px;
   position: absolute;
   height: 112%;
   background: aliceblue;
   transform: rotate(19deg);
-  left: -108px;
+  left: -16px;
   top: -82px;
   opacity: 0;
 }
 main.christmas-tree-app__tree-container:before {
   content: '';
   display: block;
-  width: 300px;
+  width: 184px;
   position: absolute;
   height: 112%;
   background: aliceblue;
   transform: rotate(-19deg);
-  right: -81px;
+  right: 25px;
   top: -82px;
   opacity: 0;
 }
 .christmas-tree-app__tree-container img {
   user-select: none;
+  width: 100%;
 }
 
 .christmas-tree-app__main {

@@ -1,9 +1,11 @@
 import React from 'react';
 import {createRoot} from "react-dom/client";
-import App from 'components/App';
+import App from '@components/App';
+import 'tippy.js/dist/tippy.css'; 
 import './index.css';
 
 const elem = document.getElementById('app')
+
 const root = createRoot(
     elem
     ||document.body.appendChild((()=>{

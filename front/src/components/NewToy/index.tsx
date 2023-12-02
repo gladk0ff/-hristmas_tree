@@ -1,22 +1,21 @@
-import React, { useEffect, useRef, useState} from 'react';
+import React, {useRef, useState} from 'react';
 import cn from 'classnames'
-import BoxFront from 'assets/box_front.png';
-import BoxBack from 'assets/box_back.png';
-import T1 from 'assets/toy1.png';
-import T2 from 'assets/toy2.png';
-import T3 from 'assets/toy3.png';
-import ToyBig from "assets/toy-big.png"
-import EditForm from "components/NewToy/Form"
+import EditForm from "@components/NewToy/Form"
+import BoxFront from '@assets/box_front.png';
+import BoxBack from '@assets/box_back.png';
+import T1 from '@assets/toy1.png';
+import T2 from '@assets/toy2.png';
+import T3 from '@assets/toy3.png';
+import ToyBig from "@assets/toy-big.png"
 
 import './style.css';
 
 let pageX=0;
 let pageY=0;
 
-const NewToy = ({target}:any) => {
-        const toyRef = useRef<any>(null);
-        const clientHeight = document.documentElement.clientHeight;
-        const clientWidth = document.documentElement.clientWidth;
+const NewToy = ({clientSize,target}:any) => {
+    const toyRef = useRef<any>(null);
+      const {clientHeight,clientWidth } = clientSize
         const dragRef = useRef<any>({active:false,shift:{x:0,y:0}});
         let drag = dragRef.current;
         const [state, setState] = useState({edit: false, data: {
@@ -38,8 +37,8 @@ const NewToy = ({target}:any) => {
                 body: _toy
             });
 
-            const data  = await resp.json();
-            console.log('data',data);
+            const data = await resp.json();
+            
             setState({
                 edit: state.edit,
                 data
@@ -68,12 +67,13 @@ const NewToy = ({target}:any) => {
         ball.style.display = 'none';
         let elemBelow = document.elementFromPoint(event.clientX, event.clientY);
         ball.style.display = 'flex';
-        if (elemBelow===target.current) {
+        
+        if (elemBelow===target.current && clientWidth && clientHeight) {
             const toy = {
                 _id:state.data._id,
                 message: state.data.message,
-                positionX:clientWidth/event.clientX,
-                positionY:clientHeight/event.clientY,
+                positionX: +toyRef.current.style.left.split('px')[0]/clientWidth,
+                positionY: +toyRef.current.style.top.split('px')[0]/clientHeight,
             }
             createOrUpdateToy(toy);
         } else {
@@ -97,7 +97,6 @@ const NewToy = ({target}:any) => {
     }
 
     const handleSubmit=(message)=>{
-
         setState({
             edit: false,
             data: {
@@ -111,7 +110,7 @@ const NewToy = ({target}:any) => {
 
     return <>
         <div className="toy-box-container">
-            <div className="toy-box" onClick={!state.data.message&&startEdit}>
+            <div className="toy-box" onClick={!state.data.message&&startEdit||(()=>{})}>
                 <img className="toy-box__front" src={BoxFront} />
                 <div>
                     <img className="toy-in-box toy-box__toy-1" src={T1} alt=""/>

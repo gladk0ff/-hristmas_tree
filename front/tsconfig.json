@@ -4,8 +4,13 @@
     "jsx": "react",
     "experimentalDecorators": true,
     "module": "esnext",
-    "moduleResolution": "Node",
-    "baseUrl": "./src",
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "lib": ["DOM"],
+    "paths": {
+      "@assets/*":  ["./src/assets/*"],
+      "@components/*":  ["./src/components/*"],
+     },
     "resolveJsonModule": true,
     "allowJs": true,
     "noEmit": true,
@@ -15,6 +20,7 @@
     "strict": true,
     "strictPropertyInitialization": false,
     "skipLibCheck": true
+    
   },
-  "include": ["./src/**/*"]
+  "include": ["./src/**/*"],
 }
