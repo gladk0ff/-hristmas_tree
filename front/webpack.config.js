@@ -2,7 +2,8 @@
 const path = require('path');
 const webpack = require('webpack')
 const {
-    API_SERVICE_URL
+    API_SERVICE_URL,
+    CURRENT_YEAR
 } = require('./app.config')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
@@ -47,7 +48,8 @@ module.exports = (env, argv) => {
             new CleanWebpackPlugin(),
             new webpack.DefinePlugin({
                 "process.env": {
-                    API_SERVICE_URL: JSON.stringify(API_SERVICE_URL)
+                    API_SERVICE_URL: JSON.stringify(API_SERVICE_URL),
+                    CURRENT_YEAR:JSON.stringify(CURRENT_YEAR)
                 }
             }),
             new MiniCssExtractPlugin({

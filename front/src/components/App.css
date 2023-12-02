@@ -22,6 +22,15 @@
   background-repeat: no-repeat;
 }
 
+.christmas-tree-app__current-year{
+  font-size: 140px;
+  font-weight: bold;
+  color: white;
+  position: fixed;
+  right: 42px;
+  top: 83px;
+}
+
 
 .christmas-tree-app__header {
   position: fixed;

@@ -13,10 +13,9 @@ import './style.css';
 let pageX=0;
 let pageY=0;
 
-const NewToy = ({target}:any) => {
-        const toyRef = useRef<any>(null);
-        const clientHeight = document.documentElement.clientHeight;
-        const clientWidth = document.documentElement.clientWidth;
+const NewToy = ({clientSize,target}:any) => {
+    const toyRef = useRef<any>(null);
+      const {clientHeight,clientWidth } = clientSize
         const dragRef = useRef<any>({active:false,shift:{x:0,y:0}});
         let drag = dragRef.current;
         const [state, setState] = useState({edit: false, data: {
@@ -38,8 +37,8 @@ const NewToy = ({target}:any) => {
                 body: _toy
             });
 
-            const data  = await resp.json();
-            console.log('data',data);
+            const data = await resp.json();
+            
             setState({
                 edit: state.edit,
                 data
@@ -68,15 +67,13 @@ const NewToy = ({target}:any) => {
         ball.style.display = 'none';
         let elemBelow = document.elementFromPoint(event.clientX, event.clientY);
         ball.style.display = 'flex';
-        // clientWidth = 100
-        // event.clientX = positionX
-        // positionX = event.clientX*100/clientWidth
-        if (elemBelow===target.current) {
+        
+        if (elemBelow===target.current && clientWidth && clientHeight) {
             const toy = {
                 _id:state.data._id,
                 message: state.data.message,
-                positionX: event.clientX/clientWidth,
-                positionY: event.clientY/clientHeight,
+                positionX: +toyRef.current.style.left.split('px')[0]/clientWidth,
+                positionY: +toyRef.current.style.top.split('px')[0]/clientHeight,
             }
             createOrUpdateToy(toy);
         } else {

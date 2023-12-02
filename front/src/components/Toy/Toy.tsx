@@ -1,5 +1,5 @@
 import React, {MutableRefObject, useEffect, useRef, useState} from 'react';
-import { Tooltip } from 'react-tooltip'
+import Tippy from '@tippyjs/react';
 import T1 from '@assets/toy1.png';
 import T2 from '@assets/toy2.png';
 import T3 from '@assets/toy3.png';
@@ -17,25 +17,24 @@ export const config = {
     3: T3
 }
 
-const Toy = ({positionX, positionY, message}: any) => {
-    if (!positionX || !positionY || !message) return null;
-    const clientHeight = document.documentElement.clientHeight;
-    const clientWidth = document.documentElement.clientWidth;
+const Toy = ({ toy,clientSize}: any) => {
+    const { positionX, positionY, message } = toy
+    const {clientHeight,clientWidth } = clientSize
+    if (!positionX || !positionY || !message || !clientHeight || !clientWidth) return null;
+    
     const style = {
         left: clientWidth * positionX,
         top: clientHeight * positionY,
     };
 
-    return <>
+    return <Tippy content={message}>
         <div
              style={style}
-             data-tooltip-id="my-tooltip"
-             data-tooltip-content={message}
-             className="toy toy--read-only">
+            className="toy toy--read-only">
             <img src={config[getRandomInt(3)]}/>
         </div>
-        <Tooltip multiline id="my-tooltip" />
-    </>
+    </Tippy>
+    
 }
 
 export default Toy
