@@ -42,6 +42,7 @@ module.exports = (env, argv) => {
 		devtool: isDev ? "source-map" : false,
 		plugins: [
 			new HtmlWebpackPlugin({
+				title: "Новогодняя ёлка",
 				favicon: "assets/logo.svg",
 			}),
 			new CleanWebpackPlugin(),
