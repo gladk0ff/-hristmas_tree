@@ -1,75 +1,141 @@
 .toy {
-    display: flex;
-    width: 40px;
-    height: 40px;
-    transition: all 0.1s;
-    position: absolute;
-    cursor:pointer;
-    background-size: contain;
-    z-index: 3;
+	display: flex;
+	width: 40px;
+	height: 40px;
+	transition: all 0.1s;
+	position: absolute;
+	cursor: pointer;
+	background-size: contain;
+	z-index: 3;
+}
+
+.tippy-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	padding: 12px;
+	border-radius: 12px;
+	border: 4px dashed red;
+	background-color: white;
+	box-shadow: inset 0px 0px 100px 0px antiquewhite;
+}
+
+.tippy-messages {
+	font-style: italic;
+}
+
+.animated {
+	background: url("https://i.ibb.co/89Cf3dm/text-bg.png") no-repeat;
+	background-clip: text;
+	-webkit-background-clip: text;
+	color: transparent;
+	animation: moveBg 20s linear infinite;
+	-webkit-animation: moveBg 20s linear infinite;
+	border: none;
 }
 
 .toy__create-block {
-    border: 8px dashed green;
-    display: flex;
-    right: 83px;
-    z-index: 5;
-    bottom: 110px;
-    height: 139px;
-    align-items: flex-end;
-    font-weight: bold;
-    transform: translate(389px, 11px);
+	border: 8px dashed green;
+	display: flex;
+	right: 83px;
+	z-index: 5;
+	bottom: 110px;
+	height: 139px;
+	align-items: flex-end;
+	font-weight: bold;
+	transform: translate(389px, 11px);
 }
 
-
 .toy-box-container {
-    position: absolute;
-    right: 10%;
-    bottom: -2%;
-    width: 200px;
-    height: 250px;
-    z-index: 5;
-    cursor: pointer;
+	position: absolute;
+	right: 10%;
+	bottom: -2%;
+	width: 200px;
+	height: 250px;
+	z-index: 5;
+	cursor: pointer;
 }
 
 .toy-box {
-    position: relative;
-    width: 300px;
-    height: 250px;
-    bottom: -50px;
+	position: relative;
+	width: 300px;
+	height: 250px;
+	bottom: -50px;
 }
 .toy-box img {
-    display: block;
+	display: block;
 }
 
 .toy-box__front,
 .toy-box__back {
-    position: absolute;
+	position: absolute;
 }
-.toy-box__front{
-    z-index: 3;
-    clip-path: polygon(0 102%, 98% -5%,100% 8%, 95% 63%, 60% 102%, 8% 61%, 0% -6%,61% 36%);
-
+.toy-box__front {
+	z-index: 3;
+	clip-path: polygon(0 102%, 98% -5%, 100% 8%, 95% 63%, 60% 102%, 8% 61%, 0% -6%, 61% 36%);
 }
-.toy-box__toy-1{
-    right: 80px;
+.toy-box__toy-1 {
+	right: 80px;
 }
-.toy-box__toy-2{
-    right: 140px;
+.toy-box__toy-2 {
+	right: 140px;
 }
-.toy-box__toy-3{
-    right: 200px;
+.toy-box__toy-3 {
+	right: 200px;
 }
-.toy-box__back{
-    z-index: 1;
-     top: -164px;
-    right: 22px;
+.toy-box__back {
+	z-index: 1;
+	top: -164px;
+	right: 22px;
 }
 .toy-in-box {
-    position: absolute;
-    z-index: 2;
+	position: absolute;
+	z-index: 2;
 }
 
 .toy--read-only {
-    transform: translate(50%,-50%);
+	transform: translate(50%, -50%);
+}
+
+.toy__img {
+	z-index: 10;
+}
+
+.toy--read-only:after {
+	z-index: 1;
+	content: "";
+	width: 30px;
+	top: 8px;
+	right: 8px;
+	height: 30px;
+	border-radius: 50%;
+	position: absolute;
+	-webkit-animation: glowing 0.7s ease-in-out infinite alternate;
+	-moz-animation: glowing 0.7s ease-in-out infinite alternate;
+	animation: glowing 0.7s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glowing {
+	from {
+		box-shadow:
+			0 0 10px #fff,
+			0 0 20px #fff,
+			0 0 30px #f0f,
+			0 0 40px #0ff,
+			0 0 50px #e60073,
+			0 0 60px #e60073,
+			0 0 70px #e60073;
+	}
+	to {
+		box-shadow:
+			0 0 20px #fff,
+			0 0 30px #ff4da6,
+			0 0 40px #ff4da6,
+			0 0 50px #ff4da6,
+			0 0 60px #ff4da6,
+			0 0 70px #ff4da6,
+			0 0 80px #ff4da6;
+	}
 }
