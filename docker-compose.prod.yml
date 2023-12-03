@@ -6,6 +6,7 @@ services:
       dockerfile: Dockerfile
       args:
         API_SERVICE_URL: ${API_SERVICE_URL}
+        CURRENT_YEAR: ${CURRENT_YEAR}
     restart: always
     ports:
       - 3000:80
