@@ -14,8 +14,6 @@ const init = async (getToys) => {
         }
     });
 
-    server.register({ plugin: require('hapi-cors') }, (err) => { console.log("hapi-cors"); });
-
     server.route({
         method: 'GET',
         path: '/',
