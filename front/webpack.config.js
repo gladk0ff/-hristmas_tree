@@ -44,6 +44,17 @@ module.exports = (env, argv) => {
 			new HtmlWebpackPlugin({
 				title: "Новогодняя ёлка",
 				favicon: "assets/logo.svg",
+				meta: {
+					"http-equiv": "Content-Security-Policy",
+					content: {
+						"default-src": "'self'",
+						"script-src": "'self' 'unsafe-inline'",
+						"style-src": "'self' 'unsafe-inline'",
+						"img-src": "'self' data:",
+						"connect-src": "'self'",
+						"font-src": "'self'",
+					},
+				},
 			}),
 			new CleanWebpackPlugin(),
 			new webpack.DefinePlugin({
