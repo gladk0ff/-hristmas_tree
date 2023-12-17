@@ -9,7 +9,7 @@ const init = async (getToys) => {
         port: 5000,
         routes: {
             cors: {
-                origin: ['*'] // an array of origins or 'ignore'
+                origin: 'ignore',
             }
         }
     });
