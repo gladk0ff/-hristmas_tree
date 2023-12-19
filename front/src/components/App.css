@@ -47,7 +47,7 @@
 
 .christmas-tree-app__placeholder-content {
 	background: #e7e6d4f0;
-	max-width: 60vw;
+	max-width: 750px;
 	border-radius: 16px;
 	padding: 2rem 1rem;
 	border: 1rem solid var(--accent-сolor);
