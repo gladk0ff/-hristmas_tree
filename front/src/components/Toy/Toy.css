@@ -96,10 +96,6 @@
 	z-index: 2;
 }
 
-.toy--read-only {
-	transform: translate(50%, -50%);
-}
-
 .toy__img {
 	z-index: 10;
 }
