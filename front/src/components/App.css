@@ -22,6 +22,51 @@
 	background-repeat: no-repeat;
 }
 
+.christmas-tree-app__placeholder {
+	margin: 0;
+	flex-direction: column;
+	position: fixed;
+	display: flex;
+	width: 100%;
+	height: 100%;
+	padding: 20px;
+	justify-content: center;
+	align-items: center;
+
+	background-color: #cabb9bd6;
+
+	background-color: var(--pattern-color1);
+	background-image: radial-gradient(at 25% 25%, var(--pattern-color2) 0 var(--pattern-dot-size), transparent 0),
+		radial-gradient(at 75% 75%, var(--pattern-color3) 0 var(--pattern-dot-size), transparent 0);
+	background-size: var(--pattern-size) var(--pattern-size);
+}
+
+.christmas-tree-app__placeholder h1 {
+	font-size: 40px;
+}
+
+.christmas-tree-app__placeholder-content {
+	background: #e7e6d4f0;
+	max-width: 60vw;
+	border-radius: 16px;
+	padding: 2rem 1rem;
+	border: 1rem solid var(--accent-сolor);
+	border-image: repeating-linear-gradient(
+			45deg,
+			white,
+			white 5px,
+			var(--accent-сolor) 6px,
+			var(--accent-сolor) 15px,
+			white 16px,
+			white 20px
+		)
+		20/1rem;
+}
+
+.christmas-tree-app__placeholder h2 {
+	font-size: 40px;
+}
+
 .christmas-tree-app__current-year {
 	font-size: 140px;
 	font-weight: bold;
