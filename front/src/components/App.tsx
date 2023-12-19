@@ -11,6 +11,7 @@ import "./App.css";
 
 function App() {
 	const [ourToys, updateOurToys] = useState([]);
+	const [isMobile, setMobileMode] = useState(false);
 	const [size, setSize] = useState({
 		clientHeight: document.getElementById("app")?.clientHeight || 0,
 		clientWidth: document.getElementById("app")?.clientWidth || 0,
@@ -34,19 +35,45 @@ function App() {
 	};
 
 	const changeSize = () => {
-		setSize({
-			clientHeight: document.getElementById("app")?.clientHeight || 0,
-			clientWidth: document.getElementById("app")?.clientWidth || 0,
-		});
+		const isNormalScreen = document?.body.clientWidth >= 1300;
+		if (isNormalScreen) {
+			setMobileMode(false);
+			setSize({
+				clientHeight: document.getElementById("app")?.clientHeight || 0,
+				clientWidth: document.getElementById("app")?.clientWidth || 0,
+			});
+		} else {
+			setMobileMode(true);
+		}
 	};
 
 	useEffect(() => {
-		getToys();
+		if (document?.body.clientWidth < 1300) {
+			setMobileMode(true);
+		} else {
+			getToys();
+		}
 		window.addEventListener("resize", changeSize);
 		return () => {
 			window.removeEventListener("resize", changeSize);
 		};
 	}, []);
+
+	if (isMobile)
+		return (
+			<div className="christmas-tree-app  scene">
+				<div className="christmas-tree-app__placeholder">
+					<div className="christmas-tree-app__placeholder-content">
+						<h1>
+							<strong>К cожалению, Мы пока не поддерживаем такое разрешение</strong> <br />
+							(минимальная ширина экрана 1300 )
+						</h1>
+						<hr />
+						<h2>МИРА,ДОБРА И УДАЧИ В НОВОМ ГОДУ ВАМ!!!</h2>
+					</div>
+				</div>
+			</div>
+		);
 
 	return (
 		<div className="christmas-tree-app scene" style={{ backgroundImage: `url(${Background2})` }}>
