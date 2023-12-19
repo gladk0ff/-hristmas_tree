@@ -120,7 +120,7 @@ main.christmas-tree-app__tree-container:after {
 	transform: rotate(13deg);
 	left: -249px;
 	top: -82px;
-	/* opacity: 0; */
+	opacity: 0;
 }
 main.christmas-tree-app__tree-container:before {
 	content: "";
@@ -134,7 +134,7 @@ main.christmas-tree-app__tree-container:before {
 	/* transform: rotate(-19deg);
 	right: 80px; */
 	top: -82px;
-	/* opacity: 0; */
+	opacity: 0;
 	background: aquamarine;
 }
 .christmas-tree-app__tree-container img {
